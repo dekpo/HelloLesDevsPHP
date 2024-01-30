@@ -11,7 +11,6 @@
             width: 100%;
         }
     </style>
-
 <body>
     <!-- SI LE CHOIX N'A PAS ETE FAIT ON AFFICHE LES OPTIONS -->
     <?php
@@ -46,14 +45,41 @@
     <!-- SI LE CHOIX A ETE FAIT ON AFFICHE LE RESULTAT -->
     <?php
     else :
+    // On définit le tableau des choix pour l'ordi
     $choices = ["rock","scissors","paper"];
+    // On tire un nombre aléatoire entre 0 et 2
     $rand = rand(0,2);
+    // On sélectionne le choix de l'ordi
     $randomChoice = $choices[$rand];
+    // On peut définir une string qhi schématise le résulat
+    // On obtient une chaine du type "scissors-paper"
+    $result = $_GET['choice']."-".$randomChoice;
 
+    $isWinner = "EQUAL !!!";
+    
+    switch ($result){
+        case "paper-rock":
+            $isWinner = "YOU WIN !!!";
+        break;
+        case "scissors-paper":
+            $isWinner = "YOU WIN !!!";
+        break;
+        case "rock-scissors":
+            $isWinner = "YOU WIN !!!";
+        break;
 
-
+        case "rock-paper":
+            $isWinner = "YOU LOOSE !!!";
+        break;
+        case "paper-scissors":
+            $isWinner = "YOU LOOSE !!!";
+        break;
+        case "scissors-rock":
+            $isWinner = "YOU LOOSE !!!";
+        break;
+    }
     ?>
-        <h1 class="text-center">GAGN&Eacute; ou PAS ?</h1>
+        <h1 class="text-center"><?php echo $isWinner; ?></h1>
         <main class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-6">
