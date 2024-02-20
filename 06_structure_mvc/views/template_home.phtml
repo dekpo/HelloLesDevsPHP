@@ -1,2 +1,35 @@
-<h1>Home</h1>
+<h1><?= CONFIG_SITE_TITLE ?></h1>
+<!-- CAROUSSEL DYNAMIQUE -->
+<div id="caroussel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#caroussel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#caroussel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#caroussel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <!-- DEBUT DE LA BOUCLE FOREACH -->
+        <?php foreach ($posts as $key => $article) : ?>
+
+            <div class="carousel-item <?php if ($key===array_key_first($posts)) echo "active" ?>">
+                <img src="<?= $article['image'] ?>" class="d-block w-100" alt="<?= $article['title'] ?>">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5><?= $article['title'] ?></h5>
+                    <p><?= $article['description'] ?></p>
+                </div>
+            </div>
+
+        <?php endforeach; ?>
+        <!-- FIN DE LA BOUCLE FOREACH -->
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#caroussel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#caroussel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<h2>Home</h2>
+<p><?= CONFIG_SITE_SLOGAN ?></p>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio vel exercitationem quasi, nemo voluptatem eligendi neque, repellendus unde iusto explicabo numquam voluptatum illum expedita ab quia, quibusdam doloribus dolorum. Nulla.</p>
