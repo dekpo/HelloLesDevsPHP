@@ -1,80 +1,73 @@
 <h1>Contact</h1>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio vel exercitationem quasi, nemo voluptatem eligendi neque, repellendus unde iusto explicabo numquam voluptatum illum expedita ab quia, quibusdam doloribus dolorum. Nulla.</p>
 <section id="contact">
-<form class="row g-3">
-<div class="col-md-6">
-    <label for="firstname" class="form-label">Firstname</label>
-    <input type="text" class="form-control" id="firstname">
-  </div>
-  <div class="col-md-6">
-    <label for="lastname" class="form-label">Lastname</label>
-    <input type="text" class="form-control" id="lastname">
-  </div>
-  <div class="col-md-6">
-    <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control" id="email">
-  </div>
-  <div class="col-md-6">
-    <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password">
-  </div>
-  <div class="col-12">
-    <label for="address" class="form-label">Address</label>
-    <input type="text" class="form-control" id="address" placeholder="1234 Main St">
-  </div>
-  <div class="col-12">
-    <label for="address2" class="form-label">Address 2</label>
-    <input type="text" class="form-control" id="address2" placeholder="Apartment, studio, or floor">
-  </div>
-  <div class="col-md-6">
-    <label for="city" class="form-label">City</label>
-    <input type="text" class="form-control" id="city">
-  </div>
-  <div class="col-md-4">
-    <label for="state" class="form-label">State</label>
-    <?php
-    $state = [
-    "Auvergne-Rhône-Alpes",
-    "Bourgogne-Franche-Comté",
-    "Bretagne",
-    "Centre-Val de Loire",
-    "Corse",
-    "Grand Est",
-    "Hauts-de-France",
-    "Ile-de-France",
-    "Normandie",
-    "Nouvelle-Aquitaine",
-    "Occitanie",
-    "Pays de la Loire",
-    "Provence Alpes Côte d’Azur",
-    "Guadeloupe",
-    "Guyane",
-    "Martinique",
-    "Mayotte",
-    "Réunion"
-    ];
-    ?>
-    <select id="state" class="form-select">
-      <option selected>Choose...</option>
-      <?php foreach($state as $value): ?>
-      <option><?php echo $value ?></option>
-      <?php endforeach; ?>
-    </select>
-  </div>
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="inputZip">
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
-    </div>
-  </div>
-  <div class="col-12 mb-3">
-    <button type="submit" class="btn btn-dark">Sign in</button>
-  </div>
-</form>
+
+    <?php if (isset($errors) && !empty($errors)) : ?>
+        <?php foreach ($errors as $error) : ?>
+            <div class="alert alert-danger" role="alert">
+                <?= $error ?>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
+    <form class="row g-3" action="?page=contact" method="POST">
+        <div class="col-md-6">
+            <label for="firstname" class="form-label">Firstname</label>
+            <input type="text" class="form-control" id="firstname" name="firstname">
+        </div>
+        <div class="col-md-6">
+            <label for="lastname" class="form-label">Lastname</label>
+            <input type="text" class="form-control" id="lastname" name="lastname">
+        </div>
+        <div class="col-md-6">
+            <label for="email" class="form-label">Email*</label>
+            <input required type="email" class="form-control" id="email" name="email">
+        </div>
+        <div class="col-md-6">
+            <label for="password" class="form-label">Password*</label>
+            <input required type="password" class="form-control" id="password" name="password">
+        </div>
+        <div class="col-12">
+            <label for="address1" class="form-label">Address 1</label>
+            <input type="text" class="form-control" id="address1" name="address1" placeholder="1234 Main St">
+        </div>
+        <div class="col-12">
+            <label for="address2" class="form-label">Address 2</label>
+            <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="col-md-6">
+            <label for="city" class="form-label">City</label>
+            <input type="text" class="form-control" id="city" name="city">
+        </div>
+        <div class="col-md-4">
+            <label for="state" class="form-label">State</label>
+            <select id="state" name="state" class="form-select">
+                <option selected>Choose...</option>
+                <?php foreach ($state as $value) : ?>
+                    <option><?= $value ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="zip" class="form-label">Zip</label>
+            <input type="text" class="form-control" id="zip" name="zip">
+        </div>
+        <div class="col-12">
+            <div class="form-floating">
+                <textarea rows="10" class="form-control" placeholder="Leave a message here" id="message" name="message"></textarea>
+                <label for="message">Message</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input required class="form-check-input" type="checkbox" id="accepted" name="accepted">
+                <label class="form-check-label" for="accepted">
+                    I accept the privacy policy
+                </label>
+            </div>
+        </div>
+        <div class="col-12 mb-3">
+            <button type="submit" class="btn btn-dark">Send</button>
+        </div>
+    </form>
 </section>
