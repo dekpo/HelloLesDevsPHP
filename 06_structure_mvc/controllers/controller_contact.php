@@ -1,4 +1,5 @@
 <?php
+$isFinished = false;
 // Si les champs email et password arrivent avec la méthode POST
 // Et s'ils ne sont pas vides
 if (isset($_POST['email']) && isset($_POST['password']) && !empty($_POST['email']) && !empty($_POST['password'])){
@@ -72,14 +73,14 @@ if (isset($_POST['email']) && isset($_POST['password']) && !empty($_POST['email'
         $sql->bindParam(':zip', $zip);
         $sql->bindParam(':message', $message);
         $sql->execute();
+        /// ON EST BON LA
+        $isFinished = true;
     }    
 }
 
-echo "<pre>";
-var_dump($_POST);
-echo "</pre>";
-
-
+// echo "<pre>";
+// var_dump($_POST);
+// echo "</pre>";
 
 $state = [
     "Auvergne-Rhône-Alpes",

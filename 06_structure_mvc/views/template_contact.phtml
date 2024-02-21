@@ -10,6 +10,11 @@
         <?php endforeach; ?>
     <?php endif; ?>
 
+    <?php if ($isFinished) : ?>
+        <div class="alert alert-success" role="alert">
+                <p>Le compte <?=$email?> a été créé avec succès.</p>
+        </div>
+    <?php else : ?>
     <form class="row g-3" action="?page=contact" method="POST">
         <div class="col-md-6">
             <label for="firstname" class="form-label">Firstname</label>
@@ -70,4 +75,5 @@
             <button type="submit" class="btn btn-dark">Send</button>
         </div>
     </form>
+    <?php endif; ?>    
 </section>
