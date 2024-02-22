@@ -27,6 +27,8 @@
   <button type="submit" class="btn btn-dark mb-3">Sign In</button>
 </form>
 <?php else : ?>
-  <pre><?php var_dump($_SESSION) ?></pre>
+  <div class="alert alert-info" role="alert">
+  Vous êtes déjà connecté avec le compte <?= $_SESSION['user']['email'] ?>.
+  </div>
 <?php endif; ?>
 </section>

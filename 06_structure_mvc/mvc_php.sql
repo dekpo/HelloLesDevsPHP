@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : mer. 21 fév. 2024 à 15:49
+-- Généré le : jeu. 22 fév. 2024 à 15:31
 -- Version du serveur : 11.2.2-MariaDB-1:11.2.2+maria~ubu2204
 -- Version de PHP : 8.2.9
 
@@ -48,7 +48,8 @@ CREATE TABLE `contact` (
 INSERT INTO `contact` (`id`, `user_id`, `firstname`, `lastname`, `address1`, `address2`, `city`, `state`, `zip`, `message`, `created_at`) VALUES
 (1, 5, 'Dekpo Wyna', 'Yologaza', '2 Rue du Lavoir', '', '74150 - RUMILLY', 'Auvergne-Rh&ocirc;ne-Alpes', '74150', 'Hello les devs PHP !!!', '2024-02-21 14:29:45'),
 (2, 6, 'Dekpo Wyna', 'Yologaza', '2 Rue du Lavoir', '', '74150 - RUMILLY', 'Choose...', '74150', '', '2024-02-21 15:21:08'),
-(3, 7, 'Dekpo Gmail', 'Yologaza', '2 Rue du Lavoir', '', 'RUMILLY', 'Corse', '74150', '', '2024-02-21 15:35:16');
+(3, 7, 'Dekpo Gmail', 'Yologaza', '2 Rue du Lavoir', '', 'RUMILLY', 'Corse', '74150', '', '2024-02-21 15:35:16'),
+(4, 8, 'Dekpo Wyna', 'Yologaza', '2 Rue du Lavoir', '', '74150 - RUMILLY', 'Auvergne-Rh&ocirc;ne-Alpes', '74150', '', '2024-02-22 08:18:13');
 
 -- --------------------------------------------------------
 
@@ -93,9 +94,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `roles`, `registered_at`) VALUES
-(5, 'dekpo@me.com', '$2y$10$YqZOVFahccRl8PoktM7sF.81mSTlqUtwsPJg/gYn/J0sT3h6vcpN2', '[]', '2024-02-21 14:29:45'),
+(5, 'dekpo@me.com', '$2y$10$m8a9JOxwYncQaN1pP126MemmU2Uuh4U2E4F5laI3.d/3pC6WaghT2', '[\"ROLE_ADMIN\",\"ROLE_MEMBER\"]', '2024-02-21 14:29:45'),
 (6, 'dw.yologaza@gmail.com', '$2y$10$5XqlJxiRx6wVLBu3YXZRIuRLAO9t6E.sms9WOJNP7z1c6fop5LkIe', '[]', '2024-02-21 15:21:08'),
-(7, 'dw.yologaza@wanadoo.fr', '$2y$10$xIxrwv4.SN6HCZVDYZT95.Q/1uUrf.PZCZslGSH6aAM0DBKGxLu8y', '[]', '2024-02-21 15:35:16');
+(7, 'dw.yologaza@wanadoo.fr', '$2y$10$xIxrwv4.SN6HCZVDYZT95.Q/1uUrf.PZCZslGSH6aAM0DBKGxLu8y', '[]', '2024-02-21 15:35:16'),
+(8, 'dekpo@icloud.com', '$2y$10$m8a9JOxwYncQaN1pP126MemmU2Uuh4U2E4F5laI3.d/3pC6WaghT2', '[]', '2024-02-22 08:18:13');
 
 --
 -- Index pour les tables déchargées
@@ -128,7 +130,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `post`
@@ -140,7 +142,7 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Contraintes pour les tables déchargées

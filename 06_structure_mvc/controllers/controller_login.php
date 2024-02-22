@@ -26,7 +26,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && !empty($_POST['email'
     }
     if (empty($errors)){
         unset($user['password']);
-        $_SESSION['user']=$user;
+        $_SESSION['user'] = $user;
         header("Location:?page=home");
     }
 }
