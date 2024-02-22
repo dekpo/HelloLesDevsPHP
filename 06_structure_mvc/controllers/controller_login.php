@@ -25,6 +25,8 @@ if (isset($_POST['email']) && isset($_POST['password']) && !empty($_POST['email'
         $errors[] = "Le mot-de-passe semble incorrect.";
     }
     if (empty($errors)){
+        unset($user['password']);
+        $_SESSION['user']=$user;
         header("Location:?page=home");
     }
 }

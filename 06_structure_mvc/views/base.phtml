@@ -35,7 +35,11 @@
             Account
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <?php if (!isset($_SESSION['user'])): ?>
             <li><a class="dropdown-item" href="?page=login">Login</a></li>
+            <?php else: ?>
+            <li><a class="dropdown-item" href="?page=logout">Logout</a></li>
+            <?php endif; ?>
             <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li> -->
