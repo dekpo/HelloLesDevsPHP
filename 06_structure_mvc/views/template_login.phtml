@@ -1,4 +1,14 @@
 <h1>Login</h1>
+<section id="login">
+
+<?php if (isset($errors) && !empty($errors)) : ?>
+        <?php foreach ($errors as $error) : ?>
+            <div class="alert alert-danger" role="alert">
+                <?= $error ?>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
 <form method="POST" action="?page=login">
   <div class="mb-3">
     <label for="email" class="form-label">Email address</label>
@@ -15,3 +25,4 @@
   </div>
   <button type="submit" class="btn btn-dark mb-3">Sign In</button>
 </form>
+</section>
