@@ -17,17 +17,27 @@ if (isset($_POST['email']) && isset($_POST['password']) && !empty($_POST['email'
     $errors = [];
     // Si la variable $user n'est pas un tableau
     // Le compte n'est pas présent dans la base de données => error
-    if (!is_array($user)){
+    if (!is_array($user)) {
         $errors[] = "Le compte $email n'existe pas. Veuillez <a href=\"?page=contact\">vous inscrire</a> svp.";
     }
     // Le compte est présent dans la BDD mais le mot-de-passe ne match pas => error
     if (is_array($user) && !password_verify($password, $user['password'])) {
         $errors[] = "Le mot-de-passe semble incorrect.";
     }
-    if (empty($errors)){
+    if (empty($errors)) {
+        // On retire le mot-de-passe hashé ...
         unset($user['password']);
+        // Avant de charger toutes les infos utilisateur dans la session
         $_SESSION['user'] = $user;
-        header("Location:?page=home");
+        // SI $_SESSION['user']['roles'] ne contient pas ROLE_ADMIN
+        // DANS CE CAS ON REDIRIGE SUR LA HOME
+        if (!in_array("ROLE_ADMIN", json_decode($_SESSION['user']['roles']))) {
+            header("Location:?page=home");
+            exit();
+        } else {
+            header("Location:?page=admin");
+            exit();
+        }
     }
 }
 // ma logique de controller

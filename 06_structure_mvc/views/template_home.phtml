@@ -1,5 +1,7 @@
 <h1><?= CONFIG_SITE_TITLE ?></h1>
-<?php var_dump( json_decode($_SESSION['user']['roles']) ) ?>
+<?php if (isset($_SESSION['user']['roles']) && in_array("ROLE_ADMIN",json_decode($_SESSION['user']['roles'])) ): ?>
+<p>Welcom admin !</p>
+<?php endif; ?>
 <!-- CAROUSSEL DYNAMIQUE -->
 <div id="caroussel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
