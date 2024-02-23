@@ -1,7 +1,7 @@
 <h1>Admin Dashboard</h1>
 <p>Welcome to this dashboard. </p>
 <h2>Handle Posts</h2>
-<p><a class="btn btn-success" href="#" role="button">Add a new Post</a></p>
+<p><a class="btn btn-success" href="?page=admin_post_add" role="button">Add a new Post</a></p>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -28,7 +28,7 @@
         <?php endforeach ?>
     </tbody>
 </table>
-<p><a class="btn btn-success" href="#" role="button">Add a new Post</a></p>
+<p><a class="btn btn-success" href="?page=admin_post_add" role="button">Add a new Post</a></p>
 <script>
     function deletePost(id){
         const question = window.confirm("Are you sure you want to delete the post "+id+" ?");
