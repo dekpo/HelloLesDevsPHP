@@ -1,2 +1,39 @@
 <h1>Admin Dashboard</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio vel exercitationem quasi, nemo voluptatem eligendi neque, repellendus unde iusto explicabo numquam voluptatum illum expedita ab quia, quibusdam doloribus dolorum. Nulla.</p>
+<p>Welcome to this dashboard. </p>
+<h2>Handle Posts</h2>
+<p><a class="btn btn-success" href="#" role="button">Add a new Post</a></p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Image</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($posts as $post) : ?>
+            <tr>
+            <th scope="row"><?= $post['id'] ?></th>
+            <td><img src="<?= $post['image'] ?>" alt="<?= $post['title'] ?>" class="thumbnail"></td>
+            <td><?= $post['title'] ?></td>
+            <td><?= substr( $post['description'],0,40 ) ?>...</td>
+            <td><?= $post['created_at'] ?></td>
+            <td><a class="btn btn-warning mb-3" href="#" role="button">Update</a>
+            <br><a class="btn btn-danger" href="javascript:deletePost(<?= $post['id'] ?>)" role="button">Delete</a>
+            </td>
+            </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>
+<p><a class="btn btn-success" href="#" role="button">Add a new Post</a></p>
+<script>
+    function deletePost(id){
+        const question = window.confirm("Are you sure you want to delete the post "+id+" ?");
+        if (question===true){
+            location.href = "?page=admin_post_delete&id="+id;
+        }
+    }
+</script>
