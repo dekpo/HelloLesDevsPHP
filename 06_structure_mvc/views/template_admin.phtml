@@ -21,7 +21,7 @@
             <td><?= $post['title'] ?></td>
             <td><?= substr( $post['description'],0,40 ) ?>...</td>
             <td><?= $post['created_at'] ?></td>
-            <td><a class="btn btn-warning mb-3" href="#" role="button">Update</a>
+            <td><a class="btn btn-warning mb-3" href="?page=admin_post_update&id=<?= $post['id'] ?>" role="button">Update</a>
             <br><a class="btn btn-danger" href="javascript:deletePost(<?= $post['id'] ?>)" role="button">Delete</a>
             </td>
             </tr>
