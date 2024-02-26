@@ -17,9 +17,10 @@ $title = htmlentities(strip_tags($_POST['title']));
 $description = htmlentities(strip_tags($_POST['description']));
 $image = htmlentities(strip_tags($_POST['image']));
 $db = connectDB();
-$sql = $db->prepare("INSERT INTO post (title, description, image) VALUES (:title, :description, :image)");
+$sql = $db->prepare("INSERT INTO post (user_id,title, description, image) VALUES (:user_id, :title, :description, :image)");
         // Les champs ne sont pas insérés directement pour des raisons de sécu,
         // Mais on utilise une fonction pour "binder" (faire correspondre) les variables/valeurs
+        $sql->bindParam(':user_id', $_SESSION['user']['id']);
         $sql->bindParam(':title', $title);
         $sql->bindParam(':description', $description);
         $sql->bindParam(':image', $image);
