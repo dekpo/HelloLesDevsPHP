@@ -1,0 +1,13 @@
+<h1><?= $article['title'] ?></h1>
+<section id="article">
+    <article class="col-12">
+        <div class="card">
+            <img src="<?= $article['image'] ?>" class="card-img-top" alt="<?= $article['title'] ?>">
+            <div class="card-body">
+                <h5 class="card-title"><?= $article['title'] ?></h5>
+                <p class="card-text"><?= $article['description'] ?></p>
+                <p class="card-text"><small>Author: <strong><?= $article['firstname'] ?><?= $article['lastname'] ?></strong></small></p>
+            </div>
+        </div>
+    </article>
+</section>
