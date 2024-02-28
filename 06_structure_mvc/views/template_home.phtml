@@ -1,9 +1,6 @@
 <h1><?= CONFIG_SITE_TITLE ?></h1>
-<?php if (isset($_SESSION['user']['roles']) && in_array("ROLE_ADMIN",json_decode($_SESSION['user']['roles'])) ): ?>
+<?php if (isRole("ROLE_ADMIN") ): ?>
 <p>Welcom dear <strong><?= $_SESSION['user']['firstname']  ?> <?= $_SESSION['user']['lastname']  ?></strong>  !</p>
-<pre>
-    <?php var_dump($_SESSION); ?>
-</pre>
 <?php endif; ?>
 <!-- CAROUSSEL DYNAMIQUE -->
 <div id="caroussel" class="carousel slide" data-bs-ride="carousel">

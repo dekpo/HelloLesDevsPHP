@@ -12,7 +12,12 @@
                 <div class="card-body">
                     <h5 class="card-title"><?= $post['title'] ?></h5>
                     <p class="card-text"><?= substr($post['description'], 0, 60) ?>...</p>
-                    <p><small>Author: <strong><?= $post['firstname'] ?> <?= $post['lastname'] ?></strong></small></p>
+                    <div class="container-fluid info">
+                    <p class="row">
+                    <span class="col-6"><small>Author:<strong>&nbsp;<?= $post['firstname'] ?>&nbsp;<?= $post['lastname'] ?></strong></small></span>
+                    <span class="col-6 text-end"><small>Date:<strong>&nbsp;<?= $post['created_at'] ?></strong></small></span>
+                    </p>
+                    </div>
                     <a href="?page=detail_post&id=<?= $post['id'] ?>" class="btn btn-dark">Read more</a>
                 </div>
             </div>

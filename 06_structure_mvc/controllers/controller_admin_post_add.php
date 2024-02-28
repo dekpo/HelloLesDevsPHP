@@ -1,14 +1,10 @@
 <?php
-// Si $_SESSION['user'] n'est pas défini
-// OU $_SESSION['user']['roles'] ne contient pas ROLE_ADMIN
+// Si l'utilisateur n'a pas un ROLE_ADMIN
 // DANS CE CAS ON REDIRIGE SUR LA HOME
-if ( !isset($_SESSION['user']) || !in_array("ROLE_ADMIN",json_decode($_SESSION['user']['roles'])) ){
+if ( !isRole("ROLE_ADMIN") ){
     header("Location:?page=home");
     exit();
 }
-// echo "<pre>";
-// var_dump($_POST);
-// echo "</pre>";
 // ma logique de controller
 // SI LE FORMULAIRE EST VALIDE
 if (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['image']) && !empty($_POST['title']) && !empty($_POST['description']) && !empty($_POST['image'])) {

@@ -37,7 +37,7 @@
                 Account
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <?php if (isset($_SESSION['user']['roles']) && in_array("ROLE_ADMIN", json_decode($_SESSION['user']['roles']))) : ?>
+                <?php if (isRole("ROLE_ADMIN")) : ?>
                   <li><a class="dropdown-item" href="?page=admin">Admin</a></li>
                   <li>
                     <hr class="dropdown-divider">
