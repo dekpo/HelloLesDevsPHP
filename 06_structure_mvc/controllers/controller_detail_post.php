@@ -1,10 +1,11 @@
 <?php
 // ma logique de controller
+
+$post_id = (int)$_GET['id'];
 // On se connecte à la bas de données
 $db = connectDB();
-$post_id = (int)$_GET['id'];
 if (isset($_POST['comment']) && !empty($_POST['comment'])){
-   $comment = htmlentities(strip_tags($_POST['comment']));
+   $comment = inputCleaner($_POST['comment']);
    $insert = $db->prepare("INSERT INTO comment (post_id,user_id,message) VALUES (:post_id,:user_id,:comment)" );
    $insert->bindParam(':post_id', $post_id);
    $insert->bindParam(':user_id', $_SESSION['user']['id']);
@@ -22,7 +23,7 @@ if ($db){
    $sql->execute();
    $comments = $sql->fetchAll(PDO::FETCH_ASSOC);
 }
-
+// dump_die($comments);
 // ma logique de controller
 // blah blah blah
 // On charge la vue

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= CONFIG_SITE_TITLE ?></title>
+</head>
+<body>
+    <header>
+        <h1><?= CONFIG_SITE_TITLE ?></h1>
+        <nav>
+            <ul>
+                <?php foreach(CONFIG_SITE_ROUTES as $key): ?>
+                    <li><a href="?page=<?= $key ?>"><?= $key ?></a></li>
+                <?php endforeach ?>   
+            </ul>
+        </nav>
+    </header>
+<?php include("./views/template_".$page.".phtml"); ?>
+</body>
+</html>

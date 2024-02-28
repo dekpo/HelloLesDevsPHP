@@ -45,3 +45,8 @@ function dump_die($var){
     echo "</pre>";
     die();
 }
+// Fonction de nettoyage des chaines provenant des formulaire
+function inputCleaner($input){
+    $string = htmlentities(strip_tags($input));
+    return $string;
+}

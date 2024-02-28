@@ -46,6 +46,7 @@
                 <?php if (!isset($_SESSION['user'])) : ?>
                   <li><a class="dropdown-item" href="?page=login">Login</a></li>
                 <?php else : ?>
+                  <li><a class="dropdown-item" href="?page=profile">Profile</a></li>
                   <li><a class="dropdown-item" href="?page=logout">Logout</a></li>
                 <?php endif; ?>
               </ul>

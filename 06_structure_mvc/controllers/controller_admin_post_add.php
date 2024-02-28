@@ -9,9 +9,9 @@ if ( !isRole("ROLE_ADMIN") ){
 // SI LE FORMULAIRE EST VALIDE
 if (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['image']) && !empty($_POST['title']) && !empty($_POST['description']) && !empty($_POST['image'])) {
 // On récup les champs du formulaire et on effectue une requête d'insertion
-$title = htmlentities(strip_tags($_POST['title']));
-$description = htmlentities(strip_tags($_POST['description']));
-$image = htmlentities(strip_tags($_POST['image']));
+$title = inputCleaner($_POST['title']);
+$description = inputCleaner($_POST['description']);
+$image = inputCleaner($_POST['image']);
 $db = connectDB();
 $sql = $db->prepare("INSERT INTO post (user_id,title, description, image) VALUES (:user_id, :title, :description, :image)");
         // Les champs ne sont pas insérés directement pour des raisons de sécu,
