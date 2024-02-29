@@ -1,7 +1,7 @@
 <?php
 // ma logique de controller
 // On se connecte à la bas de données
-$db = connectDB();
+$db = Utils::connectDB();
 $keywords = strip_tags(urldecode(trim($_GET['keywords'])));
 $posts = [];
 if ($db){

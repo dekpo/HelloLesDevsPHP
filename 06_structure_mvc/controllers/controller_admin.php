@@ -1,11 +1,11 @@
 <?php
 // Si l'utilisateur n'a pas un ROLE_ADMIN
 // DANS CE CAS ON REDIRIGE SUR LA HOME
-if ( !isRole("ROLE_ADMIN") ){
+if ( !Utils::isRole("ROLE_ADMIN") ){
     header("Location:?page=home");
     exit();
 }
-$db = connectDB();
+$db = Utils::connectDB();
 $posts = [];
 if ($db){
    $sql = $db->prepare("SELECT * FROM post ORDER BY id DESC");

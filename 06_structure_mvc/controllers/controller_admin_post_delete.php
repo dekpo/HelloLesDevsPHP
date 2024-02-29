@@ -1,7 +1,7 @@
 <?php
 // Si l'utilisateur n'a pas un ROLE_ADMIN
 // DANS CE CAS ON REDIRIGE SUR LA HOME
-if ( !isRole("ROLE_ADMIN") ){
+if ( !Utils::isRole("ROLE_ADMIN") ){
     header("Location:?page=home");
     exit();
 }
@@ -10,7 +10,7 @@ if ( !isRole("ROLE_ADMIN") ){
 // Nota Bene la syntaxe (int) permet de forcer le type à un entier
 $post_id = (int)$_GET['id'];
 // echo "ATTENTION SUPPRESSION DU POST ".$post_id;
-$db = connectDB();
+$db = Utils::connectDB();
 $sql = $db->prepare("DELETE FROM post WHERE id=$post_id");
 $sql->execute();
 header("Location:?page=admin");

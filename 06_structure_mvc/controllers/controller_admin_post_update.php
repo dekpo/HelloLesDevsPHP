@@ -1,7 +1,7 @@
 <?php
 // Si l'utilisateur n'a pas un ROLE_ADMIN
 // DANS CE CAS ON REDIRIGE SUR LA HOME
-if ( !isRole("ROLE_ADMIN") ){
+if ( !Utils::isRole("ROLE_ADMIN") ){
     header("Location:?page=home");
     exit();
 }
@@ -9,7 +9,7 @@ if ( !isRole("ROLE_ADMIN") ){
 // Donc $post_id = (int)$_GET['id'];
 $post_id = (int)$_GET['id'];
 // On effectue la requête SQL permettant de récupérer les données du post
-$db = connectDB();
+$db = Utils::connectDB();
 $sql = $db->prepare("SELECT * FROM post WHERE id=$post_id");
 $sql->execute();
 $the_post = $sql->fetch(PDO::FETCH_ASSOC);

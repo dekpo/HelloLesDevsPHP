@@ -37,7 +37,7 @@
                 Account
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <?php if (isRole("ROLE_ADMIN")) : ?>
+                <?php if (Utils::isRole("ROLE_ADMIN")) : ?>
                   <li><a class="dropdown-item" href="?page=admin">Admin</a></li>
                   <li>
                     <hr class="dropdown-divider">

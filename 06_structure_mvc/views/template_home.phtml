@@ -1,5 +1,5 @@
 <h1><?= CONFIG_SITE_TITLE ?></h1>
-<?php if (isRole("ROLE_ADMIN") ): ?>
+<?php if (Utils::isRole("ROLE_ADMIN") ): ?>
 <p>Welcom dear <strong><?= $_SESSION['user']['firstname']  ?> <?= $_SESSION['user']['lastname']  ?></strong>  !</p>
 <?php endif; ?>
 <!-- CAROUSSEL DYNAMIQUE -->

@@ -1,7 +1,7 @@
 <?php
 // ma logique de controller
 // On se connecte à la bas de données
-$db = connectDB();
+$db = Utils::connectDB();
 $posts = [];
 if ($db){
    $sql = $db->prepare("SELECT * FROM post ORDER BY id LIMIT 3");

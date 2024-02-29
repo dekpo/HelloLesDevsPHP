@@ -3,9 +3,9 @@
 
 $post_id = (int)$_GET['id'];
 // On se connecte à la bas de données
-$db = connectDB();
+$db = Utils::connectDB();
 if (isset($_POST['comment']) && !empty($_POST['comment'])){
-   $comment = inputCleaner($_POST['comment']);
+   $comment = Utils::inputCleaner($_POST['comment']);
    $insert = $db->prepare("INSERT INTO comment (post_id,user_id,message) VALUES (:post_id,:user_id,:comment)" );
    $insert->bindParam(':post_id', $post_id);
    $insert->bindParam(':user_id', $_SESSION['user']['id']);

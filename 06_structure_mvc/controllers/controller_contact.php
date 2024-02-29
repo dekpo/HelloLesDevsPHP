@@ -33,7 +33,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && !empty($_POST['email'
     }
     // On doit ensuite vérifier si l'email est déjà dans la BDD
     // On se connecte à la BDD
-    $db = connectDB();
+    $db = Utils::connectDB();
     // On recherche si l'email est déjà dans la table user
     $query = $db->prepare("SELECT email FROM user WHERE email=:email");
     // bindParam permet de renseigner la requête afin de "protéger" le serveur SQL

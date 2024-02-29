@@ -1,7 +1,7 @@
 <?php
 // Si l'utilisateur n'a pas un ROLE_ADMIN
 // DANS CE CAS ON REDIRIGE SUR LA HOME
-if ( !isRole("ROLE_ADMIN") ){
+if ( !Utils::isRole("ROLE_ADMIN") ){
     header("Location:?page=home");
     exit();
 }
@@ -9,10 +9,10 @@ if ( !isRole("ROLE_ADMIN") ){
 // SI LE FORMULAIRE EST VALIDE
 if (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['image']) && !empty($_POST['title']) && !empty($_POST['description']) && !empty($_POST['image'])) {
 // On récup les champs du formulaire et on effectue une requête d'insertion
-$title = inputCleaner($_POST['title']);
-$description = inputCleaner($_POST['description']);
-$image = inputCleaner($_POST['image']);
-$db = connectDB();
+$title = Utils::inputCleaner($_POST['title']);
+$description = Utils::inputCleaner($_POST['description']);
+$image = Utils::inputCleaner($_POST['image']);
+$db = Utils::connectDB();
 $sql = $db->prepare("INSERT INTO post (user_id,title, description, image) VALUES (:user_id, :title, :description, :image)");
         // Les champs ne sont pas insérés directement pour des raisons de sécu,
         // Mais on utilise une fonction pour "binder" (faire correspondre) les variables/valeurs
