@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : lun. 26 fév. 2024 à 11:08
+-- Généré le : jeu. 29 fév. 2024 à 09:43
 -- Version du serveur : 11.2.2-MariaDB-1:11.2.2+maria~ubu2204
 -- Version de PHP : 8.2.9
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `mvc_php`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `comment`
+--
+
+CREATE TABLE `comment` (
+  `id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL DEFAULT 5,
+  `message` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `comment`
+--
+
+INSERT INTO `comment` (`id`, `post_id`, `user_id`, `message`, `created_at`) VALUES
+(24, 23, 5, 'Test', '2024-02-28 08:52:57'),
+(25, 23, 5, 'Autre test du commentaire...', '2024-02-28 08:53:25'),
+(26, 23, 5, 'Hello !!!', '2024-02-28 09:02:59'),
+(27, 23, 5, 'Hello !!!', '2024-02-28 09:06:17'),
+(28, 23, 5, 'Hello !!!', '2024-02-28 09:08:13'),
+(29, 23, 5, 'Hello !!!', '2024-02-28 09:15:26');
 
 -- --------------------------------------------------------
 
@@ -90,7 +116,7 @@ INSERT INTO `post` (`id`, `user_id`, `title`, `description`, `image`, `created_a
 (21, 5, 'Titre de mon article hello', 'Blabh blah Blabh blah Blabh blah Blabh blah Blabh blah Blabh blah Blabh blah Blabh blah hello', 'https://cdn.pixabay.com/photo/2024/01/11/09/50/village-8501168_1280.jpg', '2024-02-23 14:18:45'),
 (22, 5, 'Mon nouveau post du jour', 'Blah blah Blah blah Blah blah Blah blah Blah blah Blah blah Blah blah Blah blah Blah blah Blah blah Blah blah Blah blah Blah blah Blah blah Blah blah Blah blah Blah blah ', 'https://cdn.pixabay.com/photo/2024/01/11/09/50/village-8501168_1280.jpg', '2024-02-26 08:55:51'),
 (23, 5, 'Hello test', 'Hello hello Hello hello Hello hello Hello hello Hello hello Hello hello Hello hello ', 'https://cdn.pixabay.com/photo/2024/01/11/09/50/village-8501168_1280.jpg', '2024-02-26 09:12:20'),
-(24, 6, 'Nouveau post avec mon compte Gmail', 'Nouveau post avec mon compte Gmail Nouveau post avec mon compte GmailNouveau post avec mon compte GmailNouveau post avec mon compte GmailNouveau post avec mon compte GmailNouveau post avec mon compte Gmail', 'https://cdn.pixabay.com/photo/2024/01/11/09/50/village-8501168_1280.jpg', '2024-02-26 09:14:13');
+(24, 6, 'Nouveau post avec mon compte Gmail', 'Nouveau post avec mon compte Gmail Nouveau post avec mon compte GmailNouveau post avec mon compte GmailNouveau post avec mon compte GmailNouveau post avec mon compte GmailNouveau post avec mon compte Gmail', './uploads/The-Witcher-Saison-2-1024x576.jpg', '2024-02-26 09:14:13');
 
 -- --------------------------------------------------------
 
@@ -121,6 +147,13 @@ INSERT INTO `user` (`id`, `email`, `password`, `roles`, `registered_at`) VALUES
 --
 
 --
+-- Index pour la table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_comment_post` (`post_id`);
+
+--
 -- Index pour la table `contact`
 --
 ALTER TABLE `contact`
@@ -145,6 +178,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT pour la table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
 -- AUTO_INCREMENT pour la table `contact`
 --
 ALTER TABLE `contact`
@@ -165,6 +204,12 @@ ALTER TABLE `user`
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `comment`
+--
+ALTER TABLE `comment`
+  ADD CONSTRAINT `fk_comment_post` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`);
 
 --
 -- Contraintes pour la table `contact`
