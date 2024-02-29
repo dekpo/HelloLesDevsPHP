@@ -10,10 +10,10 @@ class Post
         $this->db = new Database();
     }
 
-    public function getAll($nb=null){
-        $limit = !is_null($nb) ? "LIMIT ".$nb : "";
+    public function getAll($nb=null,$query="SELECT * FROM post ORDER BY id DESC"){
+        $limit = !is_null($nb) ? " LIMIT ".$nb : "";
         $posts = [];
-        $posts = $this->db->selectAll("SELECT * FROM post ORDER BY id DESC ".$limit);
+        $posts = $this->db->selectAll($query.$limit);
         return $posts;
     }
 }
