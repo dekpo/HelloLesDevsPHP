@@ -1,4 +1,5 @@
 <?php
+namespace App\Services;
 /**
  * A very simple class Router
  * based on $_GET['page']

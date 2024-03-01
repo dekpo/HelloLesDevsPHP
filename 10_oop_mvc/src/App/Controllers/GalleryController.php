@@ -1,10 +1,11 @@
 <?php
+namespace App\Controllers;
 
-class HomeController
+class GalleryController
 {
     public function index(){
-        $title = "Hello OOP World";
-        $template = './Views/template_home.phtml';
+        $title = "Hello this is the GalleryController ;)";
+        $template = './views/template_home.phtml';
         $this->render($template,[$title]);
     }
 
@@ -14,6 +15,6 @@ class HomeController
         include $templatePath;
         // On charge la mémoire tempon dans le template
         $template = ob_get_clean();
-        include './Views/base.phtml';
+        include './views/base.phtml';
     }
 }
