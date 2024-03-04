@@ -2,8 +2,9 @@
 namespace App;
 
 use App\Services\Router;
-// On charge l'autoloader
+// On charge la config
 require_once("config.php");
+// On charge l'autoloader
 require_once("autoload.php");
 
 // On détermine quelle page doit être affichée

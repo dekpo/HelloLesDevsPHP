@@ -1,0 +1,17 @@
+#logo{
+  width: 50px;
+}
+#message{
+  height: 120px;
+}
+img.thumbnail{
+  width: 100px;
+}
+#caroussel img,article img{
+  aspect-ratio: 16/10;
+}
+article div.info{
+  margin:0;
+  padding: 0;
+  font-size: smaller;
+}

@@ -17,11 +17,11 @@ class Database{
     private $pdo;
 
     public function __construct(
-        $db_host = 'localhost',
-        $db_name = 'mvc_php',
-        $db_port = '3310',
-        $db_user = 'root',
-        $db_pass = 'motdepassrootquivabienmachin'
+        $db_host = DB_HOST,
+        $db_name = DB_NAME,
+        $db_port = DB_PORT,
+        $db_user = DB_USER,
+        $db_pass = DB_PASS
     ){
         $this->db_host = $db_host;
         $this->db_name = $db_name;
