@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-class Controller{
+abstract class AbstractController{
     /**
      * This is a common method
      * to display template and

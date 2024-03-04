@@ -1,0 +1,31 @@
+<h1>Gallery</h1>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio vel exercitationem quasi, nemo voluptatem eligendi neque, repellendus unde iusto explicabo numquam voluptatum illum expedita ab quia, quibusdam doloribus dolorum. Nulla.</p>
+<pre>
+<?php
+var_dump($users);
+?>
+</pre>
+<section id="galerie" class="row">
+    <?php
+    foreach ($posts as $post) :
+    ?>
+        <article class="col-12 col-sm-6 col-md-4 mb-3">
+            <div class="card">
+                <a href="?page=detail_post&id=<?= $post['id'] ?>">
+                    <img src="<?= $post['image'] ?>" class="card-img-top" alt="<?= $post['title'] ?>">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title"><?= $post['title'] ?></h5>
+                    <p class="card-text"><?= substr($post['description'], 0, 60) ?>...</p>
+                    <div class="container-fluid info">
+                    <p class="row">
+                    <span class="col-6"><small>Author:<strong>&nbsp;<?= $post['firstname'] ?>&nbsp;<?= $post['lastname'] ?></strong></small></span>
+                    <span class="col-6 text-end"><small>Date:<strong>&nbsp;<?= $post['created_at'] ?></strong></small></span>
+                    </p>
+                    </div>
+                    <a href="?page=detail_post&id=<?= $post['id'] ?>" class="btn btn-dark">Read more</a>
+                </div>
+            </div>
+        </article>
+    <?php endforeach; ?>
+</section>
