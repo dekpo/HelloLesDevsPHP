@@ -14,13 +14,15 @@ class GalleryController extends AbstractController
         
         $dbUser = new UserManager();
         $users = $dbUser->getAll();
-        
+        $user_5 = $dbUser->getOneById(5);
+
         $template = './views/template_gallery.phtml';
 
         $this->render($template,[
             'title'=>$title,
             'posts'=>$posts,
-            'users'=>$users
+            'users'=>$users,
+            'user_5'=>$user_5
         ]);
     }
 
