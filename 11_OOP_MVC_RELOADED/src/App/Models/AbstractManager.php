@@ -25,4 +25,17 @@ abstract class AbstractManager
         return $row;
     }
 
+    public function insert($data = []){
+        $fields = self::$obj->getAttributes();
+        foreach($fields as $v){ // ["?","?","?"]
+            $values[] = "?";
+        }
+        $str_fields = implode(",",$fields); // email,password,roles
+        $str_values = implode(",",$values); // ?,?,?
+        // On veut obtenir une requête du type:
+        // INSERT INTO user (email,password,roles) VALUES (?,?,?) => exemple table user
+        // INSERT INTO post (user_id,title,description,image,updated_at) VALUES (?,?,?,?,?) => exemple table post
+        $insert = self::$db->query("INSERT INTO ".self::$tableName." (".$str_fields.") VALUES (".$str_values.")",$data);
+    }
+
 }
