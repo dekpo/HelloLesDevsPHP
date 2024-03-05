@@ -7,9 +7,10 @@ use App\Models\PostManager;
 class HomeController extends AbstractController{
     public function index(){
         $title = "Hello OOP World";
-        $template = './views/template_home.phtml';
         $p = new PostManager();
         $posts = $p->getAll(3);
+        
+        $template = './views/template_home.phtml';
         $this->render($template,[
             'title'=>$title,
             'posts'=>$posts]);

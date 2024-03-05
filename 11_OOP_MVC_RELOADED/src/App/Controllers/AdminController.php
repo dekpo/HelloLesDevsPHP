@@ -2,13 +2,13 @@
 namespace App\Controllers;
 
 use App\Controllers\AbstractController;
-use App\Services\Utils;
+use App\Services\Authenticator;
 
 class AdminController extends AbstractController{
 
     
     public function __construct(){
-        if ( !Utils::isRole("ROLE_ADMIN") ){
+        if ( !Authenticator::isRole("ROLE_ADMIN") ){
             header("Location:?page=home");
             die();
         }

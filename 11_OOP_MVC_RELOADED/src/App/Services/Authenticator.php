@@ -10,6 +10,15 @@ class Authenticator
         if (!isset($_SESSION)) session_start();
     }
 
+    static function isRole($role)
+    { // retourne true ou false
+        // Si $_SESSION['user'] est défini
+        // ET $_SESSION['user']['roles'] contient le rôle indiqué
+        // $is_role retourne un booleen true/false
+        $is_role = isset($_SESSION['user']) && in_array($role, json_decode($_SESSION['user']['roles']));
+        return $is_role;
+    }
+
     private function setSession($userData)
     {
         $_SESSION['user'] = $userData;
@@ -27,5 +36,9 @@ class Authenticator
             $this->setSession($user);
         }
         return $isLogged;
+    }
+
+    public function logout(){
+        session_destroy();
     }
 }

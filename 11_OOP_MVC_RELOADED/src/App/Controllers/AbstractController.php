@@ -1,6 +1,8 @@
 <?php
 namespace App\Controllers;
 
+use App\Services\Authenticator;
+
 abstract class AbstractController{
     /**
      * This is a common method
@@ -10,6 +12,10 @@ abstract class AbstractController{
     protected function render($templatePath,$data){
         // Ouvrir la mémoire tempon du serveur
         ob_start();
+        // $auth peut contenir toute la class Authenticator
+        // afin de simplifier la syntaxe dans les vues
+        // $auth::isRole("ROLE_ADMIN"); mieux que App\Services\Authenticator::isRole("ROLE_ADMIN")
+        $auth = Authenticator::class;
         // Quand on aura $data['posts'];
         // Grace à extract($data);
         // On pourra récupérer directement
