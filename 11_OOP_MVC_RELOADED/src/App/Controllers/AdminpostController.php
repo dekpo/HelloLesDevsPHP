@@ -2,10 +2,11 @@
 
 namespace App\Controllers;
 
+use App\Services\Utils;
 use App\Models\PostManager;
+use App\Models\CommentManager;
 use App\Services\Authenticator;
 use App\Controllers\AbstractController;
-use App\Models\CommentManager;
 
 class AdminpostController extends AbstractController
 {
@@ -33,7 +34,16 @@ class AdminpostController extends AbstractController
         $post_id = (int)$_GET['id'];
         $manager = new PostManager();
         if (isset($_POST['title'])){
-            
+            $title = Utils::inputCleaner($_POST['title']);
+            $description = Utils::inputCleaner($_POST['description']);
+            $image = Utils::inputCleaner($_POST['image']);
+            $update = $manager->update($post_id,[
+            $_SESSION['user']['id'],
+            $title,
+            $description,
+            $image,
+            date("Y-m-d H:i:s")
+           ]);
         }
         $post = $manager->getOneById($post_id);
         $template = './views/template_admin_post_update.phtml';
