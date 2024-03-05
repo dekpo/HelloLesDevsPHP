@@ -47,4 +47,24 @@ abstract class AbstractManager
         return $insert;
     }
 
+    public function update($id = null,$data = [])
+    {
+        $fields = self::$obj->getAttributes();
+        foreach($fields as $k => $v){ 
+            $values[] = $v."=?"; // title=?,description=?,image=?"
+        }
+        $str_values = implode(",",$values);
+        $update = self::$db->query("UPDATE ".self::$tableName." SET ".$str_values." WHERE id='".$id."'",$data);
+        return $update;
+    }
+
+    public function delete($id = null)
+    {
+        if (!is_null($id)){
+            self::$db->query("DELETE FROM ".self::$tableName." WHERE id=?",[$id]);
+            return true;
+        }
+        return false;
+    }
+
 }

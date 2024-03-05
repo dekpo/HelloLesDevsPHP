@@ -31,11 +31,11 @@
 <section id="comments">
     <h2>Leave a comment here</h2>
     <?php if ($auth::isRole("ROLE_MEMBER")): ?>
-        <form method="POST">
+        <form method="POST" action="?page=postdetail&action=add_comment&id=<?= $post_id ?>">
         <div class="col-12">
             <div class="form-floating mb-3">
                 <textarea rows="10" maxlength="255" class="form-control" placeholder="Leave a message here" id="comment" name="comment"></textarea>
-                <label for="message">Comment</label>
+                <label for="comment">Comment</label>
             </div>
         </div>
         <div class="col-12 mb-3">
