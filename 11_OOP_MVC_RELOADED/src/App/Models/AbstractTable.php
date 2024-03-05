@@ -33,7 +33,7 @@ abstract class AbstractTable
         $filter = ['id','className'];
         $class = get_class_vars($this->getClassName());
         foreach($class as $k => $v){
-            if (!in_array($k,$filter)) $attributes[$k] = $v;
+            if (!in_array($k,$filter)) $attributes[] = $k;
         }
         return $attributes;
     }

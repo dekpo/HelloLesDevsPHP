@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-class User 
+class User extends AbstractTable
 {
     protected ?string $email = null;
     protected ?string $password = null;

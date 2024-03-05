@@ -36,6 +36,7 @@ abstract class AbstractManager
         // INSERT INTO user (email,password,roles) VALUES (?,?,?) => exemple table user
         // INSERT INTO post (user_id,title,description,image,updated_at) VALUES (?,?,?,?,?) => exemple table post
         $insert = self::$db->query("INSERT INTO ".self::$tableName." (".$str_fields.") VALUES (".$str_values.")",$data);
+        return $insert;
     }
 
 }
