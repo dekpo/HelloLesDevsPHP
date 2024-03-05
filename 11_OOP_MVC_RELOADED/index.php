@@ -8,7 +8,7 @@ require_once("config.php");
 // On charge l'autoloader
 require_once("autoload.php");
 // On start la session avec Authenticator
-$auth = new Authenticator();
+$session = new Authenticator();
 // On détermine quelle page doit être affichée
 // ?page=
 $router = new Router();

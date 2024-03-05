@@ -17,6 +17,14 @@ abstract class AbstractManager
         return $results;
     }
 
+    public function getOne($query=null,$params=[]){
+        $default_query = "SELECT * FROM ".self::$tableName." LIMIT 1";
+        $sql_query = $query===null ? $default_query : $query;
+        $row = [];
+        $row = self::$db->select($sql_query,$params);
+        return $row;
+    }
+
     public function getOneById($id = null):array
     {
         $where = !is_null($id) ? "WHERE id=?" : "";

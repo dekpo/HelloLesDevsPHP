@@ -11,7 +11,7 @@ var_dump($user_5);
     ?>
         <article class="col-12 col-sm-6 col-md-4 mb-3">
             <div class="card">
-                <a href="?page=detail_post&id=<?= $post['id'] ?>">
+                <a href="?page=postdetail&id=<?= $post['id'] ?>">
                     <img src="<?= $post['image'] ?>" class="card-img-top" alt="<?= $post['title'] ?>">
                 </a>
                 <div class="card-body">
@@ -23,7 +23,7 @@ var_dump($user_5);
                     <span class="col-6 text-end"><small>Date:<strong>&nbsp;<?= $post['created_at'] ?></strong></small></span>
                     </p>
                     </div>
-                    <a href="?page=detail_post&id=<?= $post['id'] ?>" class="btn btn-dark">Read more</a>
+                    <a href="?page=postdetail&id=<?= $post['id'] ?>" class="btn btn-dark">Read more</a>
                 </div>
             </div>
         </article>
