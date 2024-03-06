@@ -67,10 +67,47 @@
     <?= $template ?>
     </main>
   <!-- FOOTER -->
+  <!-- MODAL COOKIE -->
+  <div class="modal" tabindex="-1" id="modalCookie">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal COOKIE</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Acceptez-vous les cookies ?</p>
+      </div>
+      <div class="modal-footer">
+        <form method="POST">
+        <button type="submit" name="cookie_no" class="btn btn-danger">No</button>
+        <button type="submit" name="cookie_yes" class="btn btn-success">Yes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
   <footer class="bg-dark text-white text-center p-2">
     <p>&copy; CCI BEAUJOLAIS - DWWM</p>
+    <?php if (isset($_SESSION['cookie'])):?>
+    <?php if ((bool)$_SESSION['cookie']===true):?>
+      Vous avez accepté les cookies
+    <?php else: ?>
+      Vous avez refusé les cookies
+    <?php endif; ?>
+    <br>
+    <a href="javascript:modalCookieShow()" class="text-white">Révoquer mon choix de cookie</a>
+    <?php endif; ?>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const modalCookie = new bootstrap.Modal(document.getElementById('modalCookie'));
+    <?php if ( !isset($_SESSION['cookie']) ) echo "modalCookie.show();"; ?>
+    function modalCookieShow(){
+      modalCookie.show();
+    }
+  </script>
+
 </body>
 
 </html>

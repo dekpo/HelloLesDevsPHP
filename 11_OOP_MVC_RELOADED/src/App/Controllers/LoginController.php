@@ -15,6 +15,12 @@ class LoginController extends AbstractController
             $email = Utils::inputCleaner($_POST['email']);
            $auth = new Authenticator();
            if ($auth->login($email,$password)){
+            // SI l'utilisateur a coché la case remember_me
+            // On lui crée un cookie
+                if (isset($_POST['remember_me'])){
+                    $cookieData = serialize($_SESSION['user']); // unserialize(string) pour récupérer notre tableau
+                    setcookie(CONFIG_COOKIE_NAME,$cookieData,time()+3600);
+                }
                 header('Location:?page=admin');
                 die();
            }
