@@ -22,28 +22,47 @@ class AdminpostController extends AbstractController
 
     public function index()
     {
-
         $template = './views/template_admin_post_add.phtml';
         $this->render($template, []);
     }
     public function create()
     {
+        $manager = new PostManager();
+        if (isset($_POST['title'])) {
+            $title = Utils::inputCleaner($_POST['title']);
+            $description = Utils::inputCleaner($_POST['description']);
+            $image = Utils::inputCleaner($_POST['image']);
+            $insert = $manager->insert([
+                $_SESSION['user']['id'],
+                $title,
+                $description,
+                $image,
+                date("Y-m-d H:i:s")
+            ]);
+            $lastid = $insert->lastInsertId();
+        }
+        header("Location:?page=admin&newpost=".$lastid);
+        die();
     }
+
+    
     public function update()
     {
         $post_id = (int)$_GET['id'];
         $manager = new PostManager();
-        if (isset($_POST['title'])){
+        if (isset($_POST['title'])) {
             $title = Utils::inputCleaner($_POST['title']);
             $description = Utils::inputCleaner($_POST['description']);
             $image = Utils::inputCleaner($_POST['image']);
-            $update = $manager->update($post_id,[
-            $_SESSION['user']['id'],
-            $title,
-            $description,
-            $image,
-            date("Y-m-d H:i:s")
-           ]);
+            $update = $manager->update($post_id, [
+                $_SESSION['user']['id'],
+                $title,
+                $description,
+                $image,
+                date("Y-m-d H:i:s")
+            ]);
+            header("Location:?page=admin");
+            die();
         }
         $post = $manager->getOneById($post_id);
         $template = './views/template_admin_post_update.phtml';
@@ -63,5 +82,6 @@ class AdminpostController extends AbstractController
         $manager = new PostManager();
         $delete = $manager->delete($post_id);
         header("Location:?page=admin");
+        die();
     }
 }
