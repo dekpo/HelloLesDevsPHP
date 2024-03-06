@@ -90,11 +90,11 @@
   <footer class="bg-dark text-white text-center p-2">
     <p>&copy; CCI BEAUJOLAIS - DWWM</p>
     <?php if (isset($_SESSION['cookie'])):?>
-    <?php if ((bool)$_SESSION['cookie']===true):?>
-      Vous avez accepté les cookies
-    <?php else: ?>
-      Vous avez refusé les cookies
-    <?php endif; ?>
+      <?php if ((bool)$_SESSION['cookie']===true):?>
+        Vous avez accepté les cookies
+      <?php else: ?>
+        Vous avez refusé les cookies
+      <?php endif; ?>
     <br>
     <a href="javascript:modalCookieShow()" class="text-white">Révoquer mon choix de cookie</a>
     <?php endif; ?>
